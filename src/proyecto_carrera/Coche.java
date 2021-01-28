@@ -6,7 +6,7 @@ private String nombrePiloto;
 private int dorsal;
 private int distanciaCarrera;
 private String estadoCoche;
-private final int potencia=50;
+private final int POTENCIA=50;
 private int velocidad;
 private int kilometrosRecorridos;
 public Coche(String nombrePiloto, int dorsal) {
