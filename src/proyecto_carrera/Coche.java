@@ -8,15 +8,14 @@ public class Coche {
 	private int dorsal;
 	private int distanciaCarrera;
 	private String estadoCoche;
-	private int potencia;
 	private int velocidad;
 	private int kilometrosRecorridos;
 	private final int POTENCIA = 50;
 
-	public Coche(String nombrePiloto, int dorsal) {
+	public Coche(String nombrePiloto, int dorsal, int distanciaCarrera) {
 		this.nombrePiloto = nombrePiloto;
 		this.dorsal = dorsal;
-		this.distanciaCarrera = 7500;
+		this.distanciaCarrera = distanciaCarrera;
 		this.estadoCoche = "Parado";
 		this.velocidad = 0;
 		this.kilometrosRecorridos = 0;
@@ -55,14 +54,6 @@ public class Coche {
 		this.estadoCoche = estadoCoche;
 	}
 
-	public int getPotencia() {
-		return potencia;
-	}
-
-	public void setPotencia(int potencia) {
-		this.potencia = potencia;
-	}
-
 	public int getVelocidad() {
 		return velocidad;
 	}
@@ -97,12 +88,12 @@ public class Coche {
 			this.setEstadoCoche("MARCHA");
 			System.out.println("Coche arrancado");
 		}
-		return;
+		
 	}
 
 public void acelerar() {
 		
-		if ((this.getEstadoCoche().equalsIgnoreCase("Parado"))||(this.getEstadoCoche().equals("Accidentado"))) {
+		if ((this.getEstadoCoche().equalsIgnoreCase("Parado"))||(this.getEstadoCoche().equalsIgnoreCase("accidentado"))) {
 			System.out.println("Para acelerar primero tienes que arrancar el coche.");
 		}else {
 			if (this.getEstadoCoche().equalsIgnoreCase("Marcha")) {
@@ -119,14 +110,12 @@ public void acelerar() {
 					System.out.println("Te has pasado de velocidad y te la has pegado.");
 				}else {
 					this.setVelocidad(velocidad);
-					this.setKilometrosRecorridos(kilometros+velocidad);
-					System.out.println("Tu velocidad es de " + this.getVelocidad() + " km/h");
+					this.setKilometrosRecorridos(kilometros+aceleracion);
+					//System.out.println("Tu velocidad es de " + this.getVelocidad() + " km/h");
 				}
 				if (this.kilometrosRecorridos >= this.distanciaCarrera) {
 					System.out.println("Has terminado la carrera.");
-				}else {
-					System.out.println("Te faltan " + (this.getDistanciaCarrera()- this.getKilometrosRecorridos()) + " kms para terminar la carrera.");
-					return;
+					this.estadoCoche = "TERMINADO";
 				}
 			}
 		}
@@ -147,21 +136,21 @@ public void acelerar() {
 
 				if (velocidad < 0) {
 					this.setVelocidad(0);
-					this.setEstadoCoche("Estas parado.");
-					System.out.println("Tu velocidad es de " + this.getVelocidad());
 				} else {
 					this.setVelocidad(velocidad);
-					this.setKilometrosRecorridos(kms + velocidad);
-					System.out.println("Vas a " + this.getVelocidad() + " km/h");
+					this.setKilometrosRecorridos(kms + frenada);
 				}
 				if (this.kilometrosRecorridos >= this.distanciaCarrera) {
-					System.out.println("Has terminado la carrera.");
-				} else {
-					System.out.println("Faltan " + (this.getDistanciaCarrera() - this.kilometrosRecorridos)
-							+ " kms para terminar la carrera.");
-					return;
+					this.estadoCoche = "Terminado";
 				}
 			}
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Coche [nombrePiloto=" + nombrePiloto + ", dorsal=" + dorsal + ", estadoCoche=" + estadoCoche
+				+ ", velocidad=" + velocidad + ", kilometrosRecorridos=" + kilometrosRecorridos + "]";
+	}
+	
 }
