@@ -21,4 +21,19 @@ public class Menu {
 
 		return opc;
 	}
+	public static int menuCarrera() {
+	int opcion=0;
+	Scanner leer = new Scanner(System.in);
+	do {
+		System.out.println("Menu carrera");
+		System.out.println("1 para intoducir nombre de carrera");
+		System.out.println("2 para intoducir nombre y dorsal del piloto");
+		System.out.println("3 para arrancar la carrera");
+		System.out.println("4 para salir");
+		System.out.println("Dime una opcion");
+		opcion=leer.nextInt();
+		
+	} while ((opcion<1) || (opcion>5));
+	return opcion;
+	}
 }

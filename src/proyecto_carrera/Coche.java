@@ -84,11 +84,14 @@ public class Coche {
 		} else if (this.getEstadoCoche().equalsIgnoreCase("MARCHA")) {
 
 			System.out.println("Tu coche ya esta arrancado");
-		} else if (this.getEstadoCoche().equals("ACCIDENTADO")) {
+		} 
+		
+	}
+	public void rearrancar() {
+		if (this.getEstadoCoche().equals("ACCIDENTADO")) {
 			this.setEstadoCoche("MARCHA");
 			System.out.println("Coche arrancado");
 		}
-		
 	}
 
 public void acelerar() {
